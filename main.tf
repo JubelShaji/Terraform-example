@@ -127,7 +127,7 @@ resource "aws_instance" "example" {
 
   provisioner "remote-exec" {
     	inline = [
-	"sudo mkdir -p /var/www/html",
+	    "sudo mkdir -p /var/www/html",
       	"sudo cp /home/ec2-user/index.html /var/www/html/index.html"
     	]
       }
