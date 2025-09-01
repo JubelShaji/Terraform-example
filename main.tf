@@ -111,7 +111,6 @@ resource "aws_instance" "example" {
               dnf install httpd -y
               systemctl enable httpd
               systemctl start httpd
-	      echo "Hai Hello" > /var/www/html/index.html
               EOF
   
   connection {
@@ -128,7 +127,8 @@ resource "aws_instance" "example" {
 
   provisioner "remote-exec" {
     	inline = [
-      	"sudo mv /home/ec2-user/index.html /var/www/html/index.html"
+	"sudo mkdir -p /var/www/html",
+      	"sudo cp /home/ec2-user/index.html /var/www/html/index.html"
     	]
       }
   
